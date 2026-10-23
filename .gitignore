@@ -1,0 +1,36 @@
+# ---- 敏感配置：后端 .env 含密钥，只提交示例文件 ----
+backend/.env
+.env.local
+.env.*.local
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.python-version
+
+# ---- Node / 前端 ----
+node_modules/
+frontend/dist/
+.vite/
+*.tsbuildinfo
+
+# ---- 运行时数据（用户上传、检索报告、日志）----
+data/uploads/
+backend/data/replay_reports/
+logs/
+*.log
+
+# ---- 开发过程产物 ----
+*.snapshot-*
+*.bak-*
+.DS_Store
+Thumbs.db
+
+# ---- 编辑器 / IDE ----
+.idea/
+.vscode/
+*.swp

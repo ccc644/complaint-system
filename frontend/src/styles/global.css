@@ -1,0 +1,76 @@
+/* 0724 客诉系统 v3.0 — 全局样式 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 设计令牌 — 从 Streamlit 主题继承 */
+:root {
+  --color-primary: #4F46E5;
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+  --color-warning: #CA8A04;
+  --color-orange: #EA580C;
+  --color-violet: #7C3AED;
+  --color-gray: #64748B;
+  --color-bg: #FFFFFF;
+  --color-bg-secondary: #F8FAFC;
+  --color-text: #1E293B;
+  --color-border: #E2E8F0;
+  --color-sidebar-bg: #F1F5F9;
+  --color-sidebar-text: #1E293B;
+  --radius-base: 6px;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+/* 优先级色标 */
+.priority-P0 { color: #dc2626; }
+.priority-P1 { color: #f59e0b; }
+.priority-P2 { color: #22c55e; }
+.priority-P3 { color: #3b82f6; }
+.priority-unknown { color: #bdbdbd; }
+
+/* ── 0727 全局交互反馈：统一聚焦态 + 过渡 ─────────────
+   让所有表单控件/按钮在全系统有一致的聚焦与悬停反馈 */
+input, select, textarea, button {
+  transition: border-color .15s ease, box-shadow .15s ease,
+              background-color .15s ease, color .15s ease;
+}
+
+/* 表单控件聚焦：主题色描边 + 柔光（仅键盘/程序聚焦时友好提示） */
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, .16);
+}
+
+/* 按钮/链接键盘聚焦可见性（无障碍） */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid rgba(79, 70, 229, .55);
+  outline-offset: 1px;
+  border-radius: var(--radius-base);
+}
+
+/* 数字表格对齐：KPI/统计/时间戳使用等宽数字，列更整齐 */
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* 工单号/编号等工程制品：等宽字体，便于扫读 */
+.mono { font-family: var(--font-mono); font-feature-settings: 'tnum'; }
+
+/* 状态药丸徽章基类 */
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+/* 滚动条美化 */
+html { scrollbar-color: #ae47d6 transparent; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #64748b; }

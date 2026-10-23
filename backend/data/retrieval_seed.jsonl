@@ -1,0 +1,20 @@
+# 检索种子集（RAG 混合检索回归度量衡）
+# 一行一个查询（JSON Lines，# 注释行与空行忽略），由 scripts/replay_retrieval_seed.py 回放。
+# 字段：
+#   query        查询原文（示例查询，可按现场常用说法替换）
+#   category     故障类别（空 = 全类别检索；预留，初版全部为空）
+#   expect_ids   必须出现在 top-k 的 KB id；空数组 = 期望检索为空（防误报）
+#   tolerate_ids 允许出现但不计噪音的已知边界 id
+#   note / source  期望值依据
+# 加种子：追加一行即可；期望值须有依据，不臆造。
+{"id": 1, "query": "死机无法开机", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "同义表述零词元重合，向量通道核心场景", "source": "示例种子"}
+{"id": 2, "query": "吸头取物料偏移", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "双通道命中示例", "source": "示例种子"}
+{"id": 3, "query": "频繁掉灯光", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "校准样例", "source": "示例种子"}
+{"id": 4, "query": "切换程式后软件卡死", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "重合仅 1 词的相关案例", "source": "示例种子"}
+{"id": 5, "query": "X轴工作台运行发热", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "端到端实测命中", "source": "示例种子"}
+{"id": 6, "query": "贴装取不起物料", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "端到端实测命中", "source": "示例种子"}
+{"id": 7, "query": "视觉标定基准中心不重合", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "现象字面复述", "source": "示例种子"}
+{"id": 8, "query": "上视相机安装朝向无标准", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "现象字面复述", "source": "示例种子"}
+{"id": 9, "query": "设备上电跳闸", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "防误报（期望返回空）", "source": "示例种子"}
+{"id": 10, "query": "请求提供说明书电子版", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "无关查询，期望返回空", "source": "示例种子"}
+{"id": 11, "query": "咨询设备价格", "category": "", "expect_ids": [], "tolerate_ids": [], "note": "无关查询，keyword 通道可能带出弱候选", "source": "示例种子"}
